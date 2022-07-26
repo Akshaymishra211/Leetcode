@@ -16,10 +16,8 @@ class Solution {
         else{
             boolean left=dfs(node.left,p,q);
             boolean right=dfs(node.right,p,q);
-            if(ans==null){
-                if((left && right) || (left && (node==p || node==q)) || (right && (node==p || node==q))){
-                    ans=node;
-                }
+            if(ans==null && ((left && right) || (left && (node==p || node==q)) || (right && (node==p || node==q)))){
+                ans=node;
             }
             return left || right || node==p || node==q;
         }
