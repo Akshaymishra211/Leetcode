@@ -9,25 +9,22 @@
  * }
  */
 class Solution {
-    ListNode node;
-    Random rand;
+    ListNode head;
+    int size=1;
     public Solution(ListNode head) {
-        this.node=head;
-        this.rand=new Random();
+        this.head=head;
     }
     
     public int getRandom() {
-        int res=0;
-        int i;
-        ListNode curr=node;
-        for(i=1;curr!=null;i++){
-            int randNum=rand.nextInt(i);
-            if(randNum==0){
-                res=curr.val;
+        int ans=head.val;
+        ListNode temp=head.next;
+        for(int i=1;temp!=null;temp=temp.next,i++){
+            int rand=new Random().nextInt(i+1);
+            if(rand>=0 && rand<=this.size-1){
+                ans=temp.val;
             }
-            curr=curr.next;
         }
-        return res;
+        return ans;
     }
 }
 
